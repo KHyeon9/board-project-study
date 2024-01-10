@@ -1,4 +1,4 @@
-package com.boardproject.boardproject.domain;
+package com.studyproject.boardproject.domain;
 
 import java.time.LocalDateTime;
 
