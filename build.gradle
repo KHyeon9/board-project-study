@@ -33,6 +33,7 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.projectlombok:lombok'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor' // 사용자가 만든 문서 셋팅과 아이디의 지원이 가능해짐
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
     //QueryDSL 설정
