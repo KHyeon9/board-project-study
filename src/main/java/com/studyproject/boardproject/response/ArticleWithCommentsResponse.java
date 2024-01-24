@@ -7,29 +7,29 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public record ArticleWithCommentResponse(
+public record ArticleWithCommentsResponse(
         Long id,
         String title,
         String content,
         String hashtag,
         String nickname,
         String email,
-        Set<ArticleCommentResponse> articleCommentResponses,
+        Set<ArticleCommentResponse> articleCommentsResponse,
         LocalDateTime createdAt
 ) {
 
-    public static ArticleWithCommentResponse of(Long id, String title, String content, String hashtag, String nickname, String email, Set<ArticleCommentResponse> articleCommentResponses, LocalDateTime createdAt) {
-        return new ArticleWithCommentResponse(id, title, content, hashtag, nickname, email, articleCommentResponses, createdAt);
+    public static ArticleWithCommentsResponse of(Long id, String title, String content, String hashtag, String nickname, String email, Set<ArticleCommentResponse> articleCommentsResponse, LocalDateTime createdAt) {
+        return new ArticleWithCommentsResponse(id, title, content, hashtag, nickname, email, articleCommentsResponse, createdAt);
     }
 
-    public static ArticleWithCommentResponse from(ArticleWithCommentsDto dto) {
+    public static ArticleWithCommentsResponse from(ArticleWithCommentsDto dto) {
         String nickname = dto.userAccountDto().nickname();
 
         if (nickname == null || nickname.isBlank()) {
             nickname = dto.userAccountDto().userId();
         }
 
-        return new ArticleWithCommentResponse(
+        return new ArticleWithCommentsResponse(
                 dto.id(),
                 dto.title(),
                 dto.content(),
