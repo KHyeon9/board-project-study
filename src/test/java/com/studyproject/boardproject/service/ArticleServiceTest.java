@@ -4,7 +4,6 @@ import com.studyproject.boardproject.domain.Article;
 import com.studyproject.boardproject.domain.UserAccount;
 import com.studyproject.boardproject.domain.type.SearchType;
 import com.studyproject.boardproject.dto.ArticleDto;
-import com.studyproject.boardproject.dto.ArticleUpdateDto;
 import com.studyproject.boardproject.dto.ArticleWithCommentsDto;
 import com.studyproject.boardproject.dto.UserAccountDto;
 import com.studyproject.boardproject.repository.ArticleRepository;
@@ -54,14 +53,14 @@ class ArticleServiceTest {
         SearchType searchType = SearchType.TITLE;
         String searchKeyword = "title";
         Pageable pageable = Pageable.ofSize(20);
-        given(articleRepository.findByTitle(searchKeyword, pageable)).willReturn(Page.empty());
+        given(articleRepository.findByTitleContaining(searchKeyword, pageable)).willReturn(Page.empty());
 
         // When
         Page<ArticleDto> articles = sut.searchArticles(searchType, searchKeyword, pageable); // 제목, 본분, id, 닉네임, 해시태그
 
         // Then
         assertThat(articles).isEmpty();
-        then(articleRepository).should().findByTitle(searchKeyword, pageable);
+        then(articleRepository).should().findByTitleContaining(searchKeyword, pageable);
     }
 
     @DisplayName("게시글을 조회하면, 게시글을 반환한다.")
@@ -97,7 +96,7 @@ class ArticleServiceTest {
         // Then
         assertThat(t)
                 .isInstanceOf(EntityNotFoundException.class)
-                .hasMessage("게시글이 없습니다 - articleId" + articleId);
+                .hasMessage("게시글이 없습니다. - articleId: " + articleId);
 
         then(articleRepository).should().findById(articleId);
     }
