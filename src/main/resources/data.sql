@@ -4,18 +4,18 @@ values ('hyeon', 'dummypassword', 'Hyeon', 'hyeon@mail.com', 'Hyeon', now(), 'hy
 
 -- article 11
 insert into article(user_account_id, title, content, hashtag, created_by, created_at, modified_by, modified_at)
-values (1, 'test1', 'content1', 'hashtag1', 'hyeon', '2022-01-12', 'hyeon', '2022-01-12'),
-       (1, 'test2', 'content2', 'hashtag2', 'hyeon', '2022-01-13', 'hyeon', '2022-01-13'),
-       (1, 'test3', 'content3', 'hashtag3', 'hyeon', '2022-01-14', 'hyeon', '2022-01-14'),
-       (1, 'test4', 'content4', 'hashtag4', 'hyeon', '2022-01-15', 'hyeon', '2022-01-15'),
-       (1, 'test5', 'content5', 'hashtag5', 'hyeon', '2022-01-16', 'hyeon', '2022-01-16'),
-       (1, 'test6', 'content6', 'hashtag6', 'hyeon', '2022-01-17', 'hyeon', '2022-01-17'),
-       (1, 'test7', 'content7', 'hashtag7', 'hyeon', '2022-01-18', 'hyeon', '2022-01-18'),
-       (1, 'test8', 'content8', 'hashtag8', 'hyeon', '2022-01-19', 'hyeon', '2022-01-19'),
-       (1, 'test9', 'content9', 'hashtag9', 'hyeon', '2022-01-20', 'hyeon', '2022-01-20'),
-       (1, 'test10', 'content10', 'hashtag10', 'hyeon', '2022-01-21', 'hyeon', '2022-01-21'),
-       (1, 'test11', 'content11', 'hashtag11', 'hyeon', '2022-01-22', 'hyeon', '2022-01-22'),
-       (1, 'test12', 'content12', 'hashtag12', 'hyeon', '2022-01-23', 'hyeon', '2022-01-23');
+values (1, 'test1', 'content1', '#hashtag1', 'hyeon', '2022-01-12', 'hyeon', '2022-01-12'),
+       (1, 'test2', 'content2', '#hashtag2', 'hyeon', '2022-01-13', 'hyeon', '2022-01-13'),
+       (1, 'test3', 'content3', '#hashtag3', 'hyeon', '2022-01-14', 'hyeon', '2022-01-14'),
+       (1, 'test4', 'content4', '#hashtag4', 'hyeon', '2022-01-15', 'hyeon', '2022-01-15'),
+       (1, 'test5', 'content5', '#hashtag5', 'hyeon', '2022-01-16', 'hyeon', '2022-01-16'),
+       (1, 'test6', 'content6', '#hashtag6', 'hyeon', '2022-01-17', 'hyeon', '2022-01-17'),
+       (1, 'test7', 'content7', '#hashtag7', 'hyeon', '2022-01-18', 'hyeon', '2022-01-18'),
+       (1, 'test8', 'content8', '#hashtag8', 'hyeon', '2022-01-19', 'hyeon', '2022-01-19'),
+       (1, 'test9', 'content9', '#hashtag9', 'hyeon', '2022-01-20', 'hyeon', '2022-01-20'),
+       (1, 'test10', 'content10', '#hashtag10', 'hyeon', '2022-01-21', 'hyeon', '2022-01-21'),
+       (1, 'test11', 'content11', '#hashtag11', 'hyeon', '2022-01-22', 'hyeon', '2022-01-22'),
+       (1, 'test12', 'content12', '#hashtag12', 'hyeon', '2022-01-23', 'hyeon', '2022-01-23');
 
 -- article comment 15
 insert into article_comment(article_id, user_account_id, content, created_by, created_at, modified_by, modified_at)
