@@ -23,7 +23,7 @@ public class ArticleComment extends AuditingFields {
     // article과 연결
     @Setter @ManyToOne(optional = false) private Article article; // article id
     // userAccount와 연결
-    @Setter @ManyToOne(optional = false) private UserAccount userAccount; // 유저 정보 (ID)
+    @Setter @ManyToOne(optional = false) @JoinColumn(name = "userId") private UserAccount userAccount; // 유저 정보 (ID)
 
     @Setter @Column(nullable = false, length = 500) private String content; // 내용
 

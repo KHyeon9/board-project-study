@@ -24,7 +24,7 @@ public record UserAccountDto(
                 entity.getUserId(),
                 entity.getUserPassword(),
                 entity.getEmail(),
-                entity.getNickName(),
+                entity.getNickname(),
                 entity.getMemo(),
                 entity.getCreatedAt(),
                 entity.getCreatedBy(),
