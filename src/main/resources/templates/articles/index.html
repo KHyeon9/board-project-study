@@ -23,7 +23,7 @@
         <div class="row">
             <div class="card card-margin search-form">
                 <div class="card-body p-0">
-                    <form action="/articles" method="GET">
+                    <form id="search-form">
                         <div class="row">
                             <div class="col-12">
                                 <div class="row no-gutters">
@@ -56,36 +56,45 @@
                 </div>
             </div>
         </div>
-        <table class="table" id="article-table">
-            <thead>
-                <tr>
-                    <th class="title col-6"><a>제목</a></th>
-                    <th class="hashtag col-2"><a>해시태그</a></th>
-                    <th class="user-id col"><a>작성자</a></th>
-                    <th class="created-at col"><a>작성일</a></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="title"><a>첫글</a></td>
-                    <td class="hashtag">#Java</td>
-                    <td class="user-id">Hyeon</td>
-                    <td class="created-at"><time>2024-01-17</time></td>
-                </tr>
-                <tr>
-                    <td>두번째글</td>
-                    <td>Spring</td>
-                    <td>Hyeon</td>
-                    <td>2024-01-16</td>
-                </tr>
-                <tr>
-                    <td>세번째글</td>
-                    <td>Python</td>
-                    <td>Hyeon</td>
-                    <td>2024-01-15</td>
-                </tr>
-            </tbody>
-        </table>
+
+        <div class="row">
+            <table class="table" id="article-table">
+                <thead>
+                    <tr>
+                        <th class="title col-6"><a>제목</a></th>
+                        <th class="hashtag col-2"><a>해시태그</a></th>
+                        <th class="user-id"><a>작성자</a></th>
+                        <th class="created-at"><a>작성일</a></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="title"><a>첫글</a></td>
+                        <td class="hashtag">#Java</td>
+                        <td class="user-id">Hyeon</td>
+                        <td class="created-at"><time>2024-01-17</time></td>
+                    </tr>
+                    <tr>
+                        <td>두번째글</td>
+                        <td>Spring</td>
+                        <td>Hyeon</td>
+                        <td>2024-01-16</td>
+                    </tr>
+                    <tr>
+                        <td>세번째글</td>
+                        <td>Python</td>
+                        <td>Hyeon</td>
+                        <td>2024-01-15</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="row">
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <a class="btn btn-primary me-md-2" role="button" id="write-article">글쓰기</a>
+            </div>
+        </div>
 
         <nav id="pagination" aria-label="Page navigation example">
             <ul class="pagination justify-content-center">

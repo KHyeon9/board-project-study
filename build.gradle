@@ -37,6 +37,7 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor' // 사용자가 만든 문서 셋팅과 아이디의 지원이 가능해짐
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
 
     //QueryDSL 설정
     implementation 'com.querydsl:querydsl-jpa:5.0.0:jakarta' // Spring 3.0이상의 경우 셋팅법

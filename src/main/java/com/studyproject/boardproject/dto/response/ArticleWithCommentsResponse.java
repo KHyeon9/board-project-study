@@ -1,4 +1,4 @@
-package com.studyproject.boardproject.response;
+package com.studyproject.boardproject.dto.response;
 
 import com.studyproject.boardproject.dto.ArticleWithCommentsDto;
 
