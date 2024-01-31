@@ -110,7 +110,7 @@ values ('hyeon2', 'test1', 'content1', '#hashtag1', 'hyeon2', '2022-01-12', 'hye
        ('hyeon2', 'dummytitle69', 'dummy content....dummy content....dummy content...', '#dummy', 'hyeon2', '2022-02-10', 'hyeon2', '2022-02-10'),
        ('hyeon2', 'dummytitle70', 'dummy content....dummy content....dummy content...', '#dummy', 'hyeon2', '2022-02-11', 'hyeon2', '2022-02-11');
 
--- article comment 15
+-- article comment 26
 insert into article_comment (article_id, user_id, content, created_by, created_at, modified_by, modified_at)
 values  (1, 'hyeon2', 'content1', 'hyeon2', '2022-01-12', 'hyeon2', '2022-01-12'),
         (2, 'hyeon2', 'content2', 'hyeon2', '2022-01-13', 'hyeon2', '2022-01-13'),
