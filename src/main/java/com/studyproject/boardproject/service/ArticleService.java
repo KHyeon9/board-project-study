@@ -63,19 +63,23 @@ public class ArticleService {
     public void updateArticle(Long articleId, ArticleDto dto) {
         try {
             Article article = articleRepository.getReferenceById(articleId);
-            if (dto.title() != null) article.setTitle(dto.title());
-            if (dto.content() != null) article.setContent(dto.content());
-            article.setHashtag(dto.hashtag());
+            UserAccount userAccount = userAccountRepository.getReferenceById(dto.userAccountDto().userId());
+
+            if(article.getUserAccount().equals(userAccount)) {
+                if (dto.title() != null) article.setTitle(dto.title());
+                if (dto.content() != null) article.setContent(dto.content());
+                article.setHashtag(dto.hashtag());
+            }
             // class level transactional에 의해 묶여있어서 트랜잭션이 끝날때 article이 변경된것을 감지하고
             // 쿼리를 날립니다. -> save코드를 따로 쓸 필요가 없다.
         } catch (EntityNotFoundException e) {
-            log.warn("게시글 업데아트 실패. 게시글을 찾을 수 없습니다. - dto: {}", dto);
+            log.warn("게시글 업데아트 실패. 게시글을 수정하는데 필요한 정보를 찾을 수 없습니다. - {}", e.getLocalizedMessage());
         }
 
     }
 
-    public void deleteArticle(long articleId) {
-        articleRepository.deleteById(articleId);
+    public void deleteArticle(long articleId, String userId) {
+        articleRepository.deleteByIdAndUserAccount_userId(articleId, userId);
     }
 
     public long getArticleCount() {
