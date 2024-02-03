@@ -23,8 +23,8 @@
 * Spring Configuration Processor
 
 ## 그 외
-* QueryDSL 5.0.0
-* Bootstrap 5.2.0-Beta1
+* QueryDSL
+* Bootstrap
 
 ## Reference
 - https://gist.github.com/djkeh/6e1d557ce8c466135b1541d342b1c25c (Thymeleaf Decoupled Logic)
