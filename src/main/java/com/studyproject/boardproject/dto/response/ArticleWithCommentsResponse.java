@@ -12,14 +12,15 @@ public record ArticleWithCommentsResponse(
         String title,
         String content,
         String hashtag,
+        String userId,
         String nickname,
         String email,
         Set<ArticleCommentResponse> articleCommentsResponse,
         LocalDateTime createdAt
 ) {
 
-    public static ArticleWithCommentsResponse of(Long id, String title, String content, String hashtag, String nickname, String email, Set<ArticleCommentResponse> articleCommentsResponse, LocalDateTime createdAt) {
-        return new ArticleWithCommentsResponse(id, title, content, hashtag, nickname, email, articleCommentsResponse, createdAt);
+    public static ArticleWithCommentsResponse of(Long id, String title, String content, String hashtag, String userId, String nickname, String email, Set<ArticleCommentResponse> articleCommentsResponse, LocalDateTime createdAt) {
+        return new ArticleWithCommentsResponse(id, title, content, hashtag, userId, nickname, email, articleCommentsResponse, createdAt);
     }
 
     public static ArticleWithCommentsResponse from(ArticleWithCommentsDto dto) {
@@ -34,6 +35,7 @@ public record ArticleWithCommentsResponse(
                 dto.title(),
                 dto.content(),
                 dto.hashtag(),
+                dto.userAccountDto().userId(),
                 nickname,
                 dto.userAccountDto().email(),
                 dto.articleCommentDtos().stream()
