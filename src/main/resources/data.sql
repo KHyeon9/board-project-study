@@ -1,9 +1,9 @@
 -- user account
 insert into user_account (user_id, user_password, nickname, email, memo, created_at, created_by, modified_at, modified_by)
-values ('hyeon', 'dummypassword', 'Hyeon', 'hyeon@mail.com', 'Hyeon', now(), 'hyeon', now(), 'hyeon');
+values ('hyeon', '{noop}dummypassword', 'Hyeon', 'hyeon@mail.com', 'Hyeon', now(), 'hyeon', now(), 'hyeon');
 
 insert into user_account (user_id, user_password, nickname, email, memo, created_at, created_by, modified_at, modified_by)
-values ('hyeon2', 'dummypassword2', 'Hyeon2', 'hyeon2@mail.com', 'Hyeon2', now(), 'hyeon2', now(), 'hyeon2');
+values ('hyeon2', '{noop}dummypassword2', 'Hyeon2', 'hyeon2@mail.com', 'Hyeon2', now(), 'hyeon2', now(), 'hyeon2');
 
 -- article 102
 insert into article(user_id, title, content, hashtag, created_by, created_at, modified_by, modified_at)
