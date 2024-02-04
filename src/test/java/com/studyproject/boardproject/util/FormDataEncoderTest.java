@@ -5,7 +5,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Import;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -13,13 +12,23 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.*;
 
 @DisplayName("테스트 도구 - Form 데이터 인코더")
-@Import({FormDataEncoder.class, ObjectMapper.class})
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE, classes = FormDataEncoderTest.class)
+@SpringBootTest(
+        webEnvironment = SpringBootTest.WebEnvironment.NONE,
+        classes = {FormDataEncoder.class, ObjectMapper.class}
+)
+/**
+ * 이 테스트는 사용하지 않는 빈이 아예 없는게 아니라
+ * 테스트 대상인 `FormDataEncoder`,
+ * 잭슨 `ObjectMapper`를 사용함
+ * `@SpringBootTest`를 사용한다면,
+ * 이들을 `@Import`로 넣는 것보다 이 변경점과 같이
+ * 더 알맞은 방법을 사용할 수 있음
+ */
 class FormDataEncoderTest {
 
     private final FormDataEncoder formDataEncoder;
 
-    public FormDataEncoderTest(@Autowired FormDataEncoder formDataEncoder) {
+    FormDataEncoderTest(@Autowired FormDataEncoder formDataEncoder) {
         this.formDataEncoder = formDataEncoder;
     }
 

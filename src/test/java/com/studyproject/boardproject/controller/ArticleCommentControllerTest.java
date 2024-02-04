@@ -34,7 +34,7 @@ class ArticleCommentControllerTest {
 
     @MockBean private ArticleCommentService articleCommentService;
 
-    public ArticleCommentControllerTest(@Autowired MockMvc mvc,
+    ArticleCommentControllerTest(@Autowired MockMvc mvc,
                                         @Autowired FormDataEncoder formDataEncoder) {
         this.mvc = mvc;
         this.formDataEncoder = formDataEncoder;
