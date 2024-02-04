@@ -49,14 +49,14 @@ class ArticleControllerTest {
     @MockBean private ArticleService articleService;
     @MockBean private PaginationService paginationService;
 
-    public ArticleControllerTest(@Autowired MockMvc mvc, @Autowired FormDataEncoder formDataEncoder) {
+    ArticleControllerTest(@Autowired MockMvc mvc, @Autowired FormDataEncoder formDataEncoder) {
         this.mvc = mvc;
         this.formDataEncoder = formDataEncoder;
     }
 
     @DisplayName("[View/GET] 게시글 리스트 (게시판) 페이지 - 정상 호출 ")
     @Test
-    public void givenNothing_whenRequestingArticlesView_thenReturnsArticlesView() throws Exception {
+    void givenNothing_whenRequestingArticlesView_thenReturnsArticlesView() throws Exception {
         // Given
         given(articleService.searchArticles(eq(null), eq(null), any(Pageable.class))).willReturn(Page.empty());
         given(paginationService.getPaginationBarNumbers(anyInt(), anyInt())).willReturn(List.of(0, 1, 2, 3, 4));
@@ -75,7 +75,7 @@ class ArticleControllerTest {
 
     @DisplayName("[View/GET] 게시글 리스트 (게시판) 페이지 - 검색어와 함께 호출 ")
     @Test
-    public void givenSearchKeyword_whenSearchingArticlesView_thenReturnsArticlesView() throws Exception {
+    void givenSearchKeyword_whenSearchingArticlesView_thenReturnsArticlesView() throws Exception {
         // Given
         SearchType searchType = SearchType.TITLE;
         String searchValue = "title";
@@ -144,7 +144,7 @@ class ArticleControllerTest {
     @DisplayName("[View/GET] 게시글 페이지 - 정상 호출, 인증된 사용자")
     @WithMockUser
     @Test
-    public void givenNothing_whenRequestingArticleView_thenReturnsArticleView() throws Exception {
+    void givenNothing_whenRequestingArticleView_thenReturnsArticleView() throws Exception {
         // Given
         Long articleId = 1L;
         long totalCount = 1L;
@@ -167,7 +167,7 @@ class ArticleControllerTest {
     @Disabled("구현중")
     @DisplayName("[View/GET] 게시글 검색 전용 페이지 - 정상 호출 ")
     @Test
-    public void givenNothing_whenRequestingArticleSearchView_thenReturnsArticleSearchView() throws Exception {
+    void givenNothing_whenRequestingArticleSearchView_thenReturnsArticleSearchView() throws Exception {
         // Given
 
         // When&Then
@@ -179,7 +179,7 @@ class ArticleControllerTest {
 
     @DisplayName("[View/GET] 게시글 해시태그 검색 페이지 - 정상 호출 ")
     @Test
-    public void givenNothing_whenRequestingArticleSearchHashtagView_thenReturnsArticleSearchHashtagView() throws Exception {
+    void givenNothing_whenRequestingArticleSearchHashtagView_thenReturnsArticleSearchHashtagView() throws Exception {
         // Given
         List<String> hashtags = List.of("#java", "#srping", "#boot");
         given(articleService.searchArticlesViaHashtag(eq(null), any(Pageable.class))).willReturn(Page.empty());
@@ -203,7 +203,7 @@ class ArticleControllerTest {
 
     @DisplayName("[View/GET] 게시글 해시태그 검색 페이지 - 정상 호출, 해시태그 입력 ")
     @Test
-    public void givenHashtag_whenRequestingArticleSearchHashtagView_thenReturnsArticleSearchHashtagView() throws Exception {
+    void givenHashtag_whenRequestingArticleSearchHashtagView_thenReturnsArticleSearchHashtagView() throws Exception {
         // Given
         String hashtag = "#java";
         List<String> hashtags = List.of("#java", "#srping", "#boot");

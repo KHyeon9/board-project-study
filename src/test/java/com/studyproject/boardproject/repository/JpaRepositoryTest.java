@@ -28,7 +28,7 @@ class JpaRepositoryTest {
     private final UserAccountRepository userAccountRepository;
 
     // 생성자 주입 junit5라서 가능
-    public JpaRepositoryTest(
+    JpaRepositoryTest(
             @Autowired ArticleRepository articleRepository,
             @Autowired ArticleCommentRepository articleCommentRepository,
             @Autowired UserAccountRepository userAccountRepository) {
@@ -103,7 +103,7 @@ class JpaRepositoryTest {
 
     @EnableJpaAuditing
     @TestConfiguration // 테스트의 경우에만 스캐닝되어서 사용 -> JpaConfig부분을 치환함
-    public static class TestJpaConfig {
+    static class TestJpaConfig {
 
         @Bean
         public AuditorAware<String> auditorAware() {
