@@ -8,6 +8,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.context.TestComponent;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
@@ -18,7 +19,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @DisplayName("View Controller - 인증")
-@Import(TestSecurityConfig.class)
+@Import(AuthControllerTest.EmptyController.class)
 @WebMvcTest(Void.class)
 class AuthControllerTest {
 
@@ -44,4 +45,10 @@ class AuthControllerTest {
         then(articleService).shouldHaveNoInteractions();;
         then(paginationService).shouldHaveNoInteractions();;
     }
+
+    /**
+     * 어떤 컨트롤러도 필요하지 않은 테스트임을 나타내기 위해 테스트용 빈 컴포넌트를 사용함.
+     */
+    @TestComponent
+    static class EmptyController {}
 }
