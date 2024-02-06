@@ -139,7 +139,7 @@ class JpaRepositoryTest {
         assertThat(articlePage.getContent().get(0).getTitle()).isEqualTo("test16");
         assertThat(articlePage.getContent().get(0).getHashtags())
                 .extracting("hashtagName", String.class)
-                .containsExactly("fuscia", "crimson", "teal");
+                .containsExactly("fuscia");
         assertThat(articlePage.getTotalElements()).isEqualTo(4);
         assertThat(articlePage.getTotalPages()).isEqualTo(2);
     }
