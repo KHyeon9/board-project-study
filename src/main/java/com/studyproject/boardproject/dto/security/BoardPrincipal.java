@@ -20,7 +20,7 @@ public record BoardPrincipal(
 ) implements UserDetails {
 
     public static BoardPrincipal of(String username, String password, String email, String nickname, String memo) {
-
+        // 인증만하고 권한을 다루지 않아서 임의로 셋팅
         Set<RoleType> roleTypes = Set.of(RoleType.USER);
 
         return new BoardPrincipal(

@@ -43,6 +43,8 @@ public class ArticleCommentService {
         }
     }
 
+    // 댓글 수정은 클라이언트에서 생각할 내용이 많아지므로 이번 개발에서는 제외
+    @Deprecated
     public void updateArticleComment(ArticleCommentDto dto) {
         try {
             ArticleComment articleComment = articleCommentRepository.getReferenceById(dto.id());
