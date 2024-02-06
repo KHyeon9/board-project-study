@@ -1,38 +1,42 @@
 package com.studyproject.boardproject.dto.response;
 
 import com.studyproject.boardproject.dto.ArticleDto;
+import com.studyproject.boardproject.dto.HashtagDto;
 
 import java.time.LocalDateTime;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public record ArticleResponse(
         Long id,
         String title,
         String content,
-        String hashtag,
-        String nickname,
+        Set<String> hashtags,
+        LocalDateTime createdAt,
         String email,
-        LocalDateTime createdAt
+        String nickname
 ) {
 
-    public static ArticleResponse of(Long id, String title, String content, String hashtag, String nickname, String email, LocalDateTime createdAt) {
-        return new ArticleResponse(id, title, content, hashtag, nickname, email, createdAt);
+    public static ArticleResponse of(Long id, String title, String content, Set<String> hashtags, LocalDateTime createdAt, String email, String nickname) {
+        return new ArticleResponse(id, title, content, hashtags, createdAt, email, nickname);
     }
 
     public static ArticleResponse from(ArticleDto dto) {
         String nickname = dto.userAccountDto().nickname();
-
         if (nickname == null || nickname.isBlank()) {
             nickname = dto.userAccountDto().userId();
         }
-
         return new ArticleResponse(
                 dto.id(),
                 dto.title(),
                 dto.content(),
-                dto.hashtag(),
-                nickname,
+                dto.hashtagDtos().stream()
+                        .map(HashtagDto::hashtagName)
+                        .collect(Collectors.toUnmodifiableSet())
+                ,
+                dto.createdAt(),
                 dto.userAccountDto().email(),
-                dto.createdAt()
+                nickname
         );
     }
 }

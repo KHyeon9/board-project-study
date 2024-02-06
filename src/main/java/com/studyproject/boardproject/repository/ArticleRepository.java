@@ -25,24 +25,22 @@ public interface ArticleRepository extends
     Page<Article> findByContentContaining(String content, Pageable pageable);
     Page<Article> findByUserAccount_UserIdContaining(String userId, Pageable pageable);
     Page<Article> findByUserAccount_NicknameContaining(String nickname, Pageable pageable);
-    Page<Article> findByHashtag(String hashtag, Pageable pageable);
 
-    void deleteByIdAndUserAccount_userId(Long articleId, String userId);
+    void deleteByIdAndUserAccount_UserId(Long articleId, String userid);
 
     @Override
     default void customize(QuerydslBindings bindings, QArticle root) {
         // 리스팅하지 않는 프로퍼티를 제외시키는 것
         bindings.excludeUnlistedProperties(true);
         // 검색 가능한 속성들 설정
-        bindings.including(
-                root.title, root.content, root.hashtag, root.createdAt, root.createdBy);
+        bindings.including(root.title, root.content, root.hashtags, root.createdAt, root.createdBy);
         // 완전한 일치로 검색하기 때문에 해당 부분 설정
         // (path, value) -> path.eq(value)을 람다로 변경
         // 대소문자 구분 안하고 하당 단어가 포함되어 있을 경우 검색
         // likeIgnoreCase와 containsIgnoreCase의 차이점
         // likeIgnoreCase -> like '${value}'이고 containsIgnoreCase는 like '%${value}}%'이다
         bindings.bind(root.title).first(StringExpression::containsIgnoreCase);
-        bindings.bind(root.hashtag).first(StringExpression::containsIgnoreCase);
+        bindings.bind(root.hashtags.any().hashtagName).first(StringExpression::containsIgnoreCase);
         bindings.bind(root.createdBy).first(StringExpression::containsIgnoreCase);
         bindings.bind(root.createdAt).first(DateTimeExpression::eq);
     }

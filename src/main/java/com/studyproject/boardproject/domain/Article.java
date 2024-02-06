@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -13,7 +14,6 @@ import java.util.Set;
 @ToString(callSuper = true)
 @Table(indexes = {
         @Index(columnList = "title"),
-        @Index(columnList = "hashtag"),
         @Index(columnList = "createdAt"),
         @Index(columnList = "createdBy")
 })
@@ -25,12 +25,23 @@ public class Article extends AuditingFields {
 
     // User Account와 연결
     // joinColum으로 userId와 연결
-    @Setter @ManyToOne(optional = false) @JoinColumn(name = "userId") private UserAccount userAccount; // 유저 정보 (ID)
+    @Setter
+    @JoinColumn(name = "userId")
+    @ManyToOne(optional = false)
+    private UserAccount userAccount; // 유저 정보 (ID)
 
     @Setter @Column(nullable = false) private String title; // 제목
     @Setter @Column(nullable = false, length = 10000) private String content; // 내용
 
-    @Setter private String hashtag; // 해시태그
+    @ToString.Exclude // 순환 참조 방지
+    @JoinTable(
+            name = "article_hashtag", // 조인되서 출력될 테이블의 명
+            joinColumns = @JoinColumn(name = "articleId"), // 주인 입장에서 조인할 컬럼
+            inverseJoinColumns = @JoinColumn(name = "hashtagId") // 다른 테이블의 조인할 컬럼
+    )
+    // 삭제시 다른 게시글의 해시태그도 삭제 될 수 있으므로 insert와 update시만 casecade되도록함
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}) // psersist = insert, merge = update
+    private Set<Hashtag> hashtags = new LinkedHashSet<>();
 
     @ToString.Exclude
     @OrderBy("createdAt DESC")
@@ -39,15 +50,26 @@ public class Article extends AuditingFields {
 
     protected Article() {}
 
-    private Article(UserAccount userAccount, String title, String content, String hashtag) {
+    private Article(UserAccount userAccount, String title, String content) {
         this.userAccount = userAccount;
         this.title = title;
         this.content = content;
-        this.hashtag = hashtag;
     }
 
-    public static Article of(UserAccount userAccount, String title, String content, String hashtag) {
-        return new Article(userAccount, title, content, hashtag);
+    public static Article of(UserAccount userAccount, String title, String content) {
+        return new Article(userAccount, title, content);
+    }
+
+    public void addHashtag(Hashtag hashtag) {
+        this.getHashtags().add(hashtag);
+    }
+
+    public void addHashtags(Collection<Hashtag> hashtags) {
+        this.getHashtags().addAll(hashtags);
+    }
+
+    public void clearHashtags() {
+        this.getHashtags().clear();
     }
 
     @Override
