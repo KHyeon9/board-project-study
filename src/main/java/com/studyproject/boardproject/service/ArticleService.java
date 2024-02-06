@@ -78,9 +78,8 @@ public class ArticleService {
         try {
             Article article = articleRepository.getReferenceById(articleId);
             UserAccount userAccount = userAccountRepository.getReferenceById(dto.userAccountDto().userId());
-            // 값이 같으나 if문이 false가 뜨게되어 실행이 안되어서 일단 다른방법으로 변경해둠
-            //if (article.getUserAccount().equals(userAccount)) {
-            if (userAccount.toString().equals(article.getUserAccount().toString())) {
+
+            if (article.getUserAccount().equals(userAccount)) {
                 if (dto.title() != null) { article.setTitle(dto.title()); }
                 if (dto.content() != null) { article.setContent(dto.content()); }
 
