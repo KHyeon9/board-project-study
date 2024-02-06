@@ -117,8 +117,7 @@ class ArticleServiceTest {
         String hashtagName = "java";
         Pageable pageable = Pageable.ofSize(20);
         Article expectedArticle = createArticle();
-        given(articleRepository.findByHashtagNames(List.of(hashtagName), pageable))
-                .willReturn(new PageImpl<>(List.of(), pageable, 0));
+        given(articleRepository.findByHashtagNames(List.of(hashtagName), pageable)).willReturn(new PageImpl<>(List.of(expectedArticle), pageable, 1));
 
         // When
         Page<ArticleDto> articles = sut.searchArticlesViaHashtag(hashtagName, pageable);
@@ -318,7 +317,7 @@ class ArticleServiceTest {
         String userId = "hyeon";
         given(articleRepository.getReferenceById(articleId)).willReturn(createArticle());
         willDoNothing().given(articleRepository).deleteByIdAndUserAccount_UserId(articleId, userId);
-        willDoNothing().given(articleRepository).deleteByIdAndUserAccount_UserId(articleId, userId);
+        willDoNothing().given(articleRepository).flush();
         willDoNothing().given(hashtagService).deleteHashtagWithoutArticles(any());
 
         // When
