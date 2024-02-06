@@ -15,6 +15,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Slf4j
@@ -37,7 +38,10 @@ public class ArticleService {
             case CONTENT -> articleRepository.findByContentContaining(searchKeyword, pageable).map(ArticleDto::from);
             case ID -> articleRepository.findByUserAccount_UserIdContaining(searchKeyword, pageable).map(ArticleDto::from);
             case NICKNAME -> articleRepository.findByUserAccount_NicknameContaining(searchKeyword, pageable).map(ArticleDto::from);
-            case HASHTAG -> articleRepository.findByHashtag("#" + searchKeyword, pageable).map(ArticleDto::from);
+            case HASHTAG -> articleRepository.findByHashtagNames(
+                            Arrays.stream(searchKeyword.split(" ")).toList(),
+                            pageable
+                    ).map(ArticleDto::from);
         };
     }
 
@@ -65,10 +69,9 @@ public class ArticleService {
             Article article = articleRepository.getReferenceById(articleId);
             UserAccount userAccount = userAccountRepository.getReferenceById(dto.userAccountDto().userId());
 
-            if(article.getUserAccount().equals(userAccount)) {
-                if (dto.title() != null) article.setTitle(dto.title());
-                if (dto.content() != null) article.setContent(dto.content());
-                article.setHashtag(dto.hashtag());
+            if (article.getUserAccount().equals(userAccount)) {
+                if (dto.title() != null) { article.setTitle(dto.title()); }
+                if (dto.content() != null) { article.setContent(dto.content()); }
             }
             // class level transactional에 의해 묶여있어서 트랜잭션이 끝날때 article이 변경된것을 감지하고
             // 쿼리를 날립니다. -> save코드를 따로 쓸 필요가 없다.
@@ -79,7 +82,7 @@ public class ArticleService {
     }
 
     public void deleteArticle(long articleId, String userId) {
-        articleRepository.deleteByIdAndUserAccount_userId(articleId, userId);
+        articleRepository.deleteByIdAndUserAccount_UserId(articleId, userId);
     }
 
     public long getArticleCount() {
@@ -92,7 +95,7 @@ public class ArticleService {
             return Page.empty(pageable);
         }
 
-        return articleRepository.findByHashtag(hashtag, pageable).map(ArticleDto::from);
+        return articleRepository.findByHashtagNames(null, pageable).map(ArticleDto::from);
     }
 
     public List<String> getHashtags() {
