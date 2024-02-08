@@ -111,33 +111,41 @@ values ('hyeon2', 'test1', 'content1 #gold', 'hyeon2', '2022-01-12', 'hyeon2', '
        ('hyeon2', 'dummytitle70', 'dummy content....dummy content....dummy content...', 'hyeon2', '2022-02-11', 'hyeon2', '2022-02-11');
 
 -- article comment 26
-insert into article_comment (article_id, user_id, content, created_by, created_at, modified_by, modified_at)
-values  (1, 'hyeon2', 'content1', 'hyeon2', '2022-01-12', 'hyeon2', '2022-01-12'),
-        (2, 'hyeon2', 'content2', 'hyeon2', '2022-01-13', 'hyeon2', '2022-01-13'),
-        (3, 'hyeon2', 'content3', 'hyeon2', '2022-01-14', 'hyeon2', '2022-01-14'),
-        (4, 'hyeon2', 'content4', 'hyeon2', '2022-01-15', 'hyeon2', '2022-01-15'),
-        (5, 'hyeon', 'content5', 'hyeon', '2022-01-16', 'hyeon', '2022-01-16'),
-        (6, 'hyeon', 'content6', 'hyeon', '2022-01-17', 'hyeon', '2022-01-17'),
-        (7, 'hyeon', 'content7', 'hyeon', '2022-01-18', 'hyeon', '2022-01-18'),
-        (8, 'hyeon', 'content8', 'hyeon', '2022-01-19', 'hyeon', '2022-01-19'),
-        (9, 'hyeon', 'content9', 'hyeon', '2022-01-20', 'hyeon', '2022-01-20'),
-        (10, 'hyeon2', 'content10', 'hyeon2', '2022-01-21', 'hyeon2', '2022-01-21'),
-        (1, 'hyeon2', 'content11',  'hyeon2', '2022-01-22', 'hyeon2', '2022-01-22'),
-        (2, 'hyeon', 'content12', 'hyeon', '2022-01-23', 'hyeon', '2022-01-23'),
-        (2, 'hyeon2', 'content13', 'hyeon', '2022-01-24', 'hyeon', '2022-01-24'),
-        (3, 'hyeon', 'content14', 'hyeon', '2022-01-25', 'hyeon', '2022-01-25'),
-        (3, 'hyeon', 'content15', 'hyeon', '2022-01-25', 'hyeon', '2022-01-25'),
-        (3, 'hyeon', 'content16', 'hyeon', '2022-01-25', 'hyeon', '2022-01-25'),
-        (3, 'hyeon2', 'content17', 'hyeon2', '2022-01-26', 'hyeon2', '2022-01-26'),
-        (3, 'hyeon2', 'content18', 'hyeon2', '2022-01-26', 'hyeon2', '2022-01-26'),
-        (3, 'hyeon2', 'content19', 'hyeon2', '2022-01-26', 'hyeon2', '2022-01-26'),
-        (102, 'hyeon2', 'content20', 'hyeon2', '2022-01-26', 'hyeon2', '2022-01-26'),
-        (102, 'hyeon', 'content21', 'hyeon', '2022-01-27', 'hyeon', '2022-01-27'),
-        (102, 'hyeon2', 'content22', 'hyeon2', '2022-01-27', 'hyeon2', '2022-01-27'),
-        (102, 'hyeon', 'content23', 'hyeon', '2022-01-28', 'hyeon', '2022-01-28'),
-        (102, 'hyeon2', 'content24', 'hyeon2', '2022-01-28', 'hyeon2', '2022-01-28'),
-        (102, 'hyeon', 'content25', 'hyeon', '2022-01-29', 'hyeon', '2022-01-29'),
-        (102, 'hyeon2', 'content26', 'hyeon2', '2022-01-29', 'hyeon2', '2022-01-29');
+insert into article_comment (article_id, user_id, parent_comment_id, content, created_by, created_at, modified_by, modified_at)
+values  (1, 'hyeon2', null, 'content1', 'hyeon2', '2022-01-12', 'hyeon2', '2022-01-12'),
+        (2, 'hyeon2', null, 'content2', 'hyeon2', '2022-01-13', 'hyeon2', '2022-01-13'),
+        (3, 'hyeon2', null, 'content3', 'hyeon2', '2022-01-14', 'hyeon2', '2022-01-14'),
+        (4, 'hyeon2', null, 'content4', 'hyeon2', '2022-01-15', 'hyeon2', '2022-01-15'),
+        (5, 'hyeon', null, 'content5', 'hyeon', '2022-01-16', 'hyeon', '2022-01-16'),
+        (6, 'hyeon', null, 'content6', 'hyeon', '2022-01-17', 'hyeon', '2022-01-17'),
+        (7, 'hyeon', null, 'content7', 'hyeon', '2022-01-18', 'hyeon', '2022-01-18'),
+        (8, 'hyeon', null, 'content8', 'hyeon', '2022-01-19', 'hyeon', '2022-01-19'),
+        (9, 'hyeon', null, 'content9', 'hyeon', '2022-01-20', 'hyeon', '2022-01-20'),
+        (10, 'hyeon2', null, 'content10', 'hyeon2', '2022-01-21', 'hyeon2', '2022-01-21'),
+        (1, 'hyeon2', null, 'content11',  'hyeon2', '2022-01-22', 'hyeon2', '2022-01-22'),
+        (2, 'hyeon', null, 'content12', 'hyeon', '2022-01-23', 'hyeon', '2022-01-23'),
+        (2, 'hyeon2', null, 'content13', 'hyeon', '2022-01-24', 'hyeon', '2022-01-24'),
+        (3, 'hyeon', null, 'content14', 'hyeon', '2022-01-25', 'hyeon', '2022-01-25'),
+        (3, 'hyeon', null, 'content15', 'hyeon', '2022-01-25', 'hyeon', '2022-01-25'),
+        (3, 'hyeon', null, 'content16', 'hyeon', '2022-01-25', 'hyeon', '2022-01-25'),
+        (3, 'hyeon2', null, 'content17', 'hyeon2', '2022-01-26', 'hyeon2', '2022-01-26'),
+        (3, 'hyeon2', null, 'content18', 'hyeon2', '2022-01-26', 'hyeon2', '2022-01-26'),
+        (3, 'hyeon2', null, 'content19', 'hyeon2', '2022-01-26', 'hyeon2', '2022-01-26'),
+        (102, 'hyeon2', null, 'content20', 'hyeon2', '2022-01-26', 'hyeon2', '2022-01-26'),
+        (102, 'hyeon', null, 'content21', 'hyeon', '2022-01-27', 'hyeon', '2022-01-27'),
+        (102, 'hyeon2', null, 'content22', 'hyeon2', '2022-01-27', 'hyeon2', '2022-01-27'),
+        (102, 'hyeon', null, 'content23', 'hyeon', '2022-01-28', 'hyeon', '2022-01-28'),
+        (102, 'hyeon2', null, 'content24', 'hyeon2', '2022-01-28', 'hyeon2', '2022-01-28'),
+        (102, 'hyeon', null, 'content25', 'hyeon', '2022-01-29', 'hyeon', '2022-01-29'),
+        (102, 'hyeon2', null, 'content26', 'hyeon2', '2022-01-29', 'hyeon2', '2022-01-29');
+
+-- 대댓글 5
+insert into article_comment (article_id, user_id, parent_comment_id, content, created_by, created_at, modified_by, modified_at)
+values  (102, 'hyeon2', 24, 'content_comment1', 'hyeon2', '2022-01-12', 'hyeon2', '2022-01-12'),
+        (102, 'hyeon', 24, 'content_comment2', 'hyeon', '2022-01-13', 'hyeon2', '2022-01-13'),
+        (102, 'hyeon2', 24, 'content_comment3', 'hyeon2', '2022-01-14', 'hyeon2', '2022-01-14'),
+        (102, 'hyeon', 24, 'content_comment3', 'hyeon', '2022-01-15', 'hyeon', '2022-01-15'),
+        (102, 'hyeon2', 24, 'content_comment3', 'hyeon2', '2022-01-16', 'hyeon2', '2022-01-16');
 
 -- hashtag 20
 insert into hashtag(hashtag_name, created_at, created_by, modified_at, modified_by) values
