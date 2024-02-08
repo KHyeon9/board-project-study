@@ -144,8 +144,8 @@ insert into article_comment (article_id, user_id, parent_comment_id, content, cr
 values  (102, 'hyeon2', 24, 'content_comment1', 'hyeon2', '2022-01-12', 'hyeon2', '2022-01-12'),
         (102, 'hyeon', 24, 'content_comment2', 'hyeon', '2022-01-13', 'hyeon2', '2022-01-13'),
         (102, 'hyeon2', 24, 'content_comment3', 'hyeon2', '2022-01-14', 'hyeon2', '2022-01-14'),
-        (102, 'hyeon', 24, 'content_comment3', 'hyeon', '2022-01-15', 'hyeon', '2022-01-15'),
-        (102, 'hyeon2', 24, 'content_comment3', 'hyeon2', '2022-01-16', 'hyeon2', '2022-01-16');
+        (102, 'hyeon', 24, 'content_comment4', 'hyeon', '2022-01-15', 'hyeon', '2022-01-15'),
+        (102, 'hyeon2', 24, 'content_comment5', 'hyeon2', '2022-01-16', 'hyeon2', '2022-01-16');
 
 -- hashtag 20
 insert into hashtag(hashtag_name, created_at, created_by, modified_at, modified_by) values
