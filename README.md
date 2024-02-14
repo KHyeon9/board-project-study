@@ -32,4 +32,5 @@
 - https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/form.html (Spring Security FormLogin Docs)
 - https://getbootstrap.com/ (Bootstrap)
 - https://bootdey.com/ (Bootdey)
+- https://developers.kakao.com/ (Kakao Developers)
 
