@@ -1,5 +1,5 @@
 # board-project-study
-패스트캠퍼스 강의를 통한 spring과 jpa 등을 공부합니다.
+패스트캠퍼스 강의를 통해 클론 코딩을 하면서 spring과 jpa 등을 공부합니다.
 
 ## 개발 환경
 * Intellij IDEA Ultimate 2023.2.2
