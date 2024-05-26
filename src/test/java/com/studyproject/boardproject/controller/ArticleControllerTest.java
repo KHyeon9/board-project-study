@@ -327,7 +327,7 @@ class ArticleControllerTest {
     @DisplayName("[View/POST] 게시글 삭제 - 정상 호출")
     @WithUserDetails(value = "hyeonTest", setupBefore = TestExecutionEvent.TEST_EXECUTION)
     @Test
-    void givenArticleIdToDelete_whenRequesting_thenDeleteswArticles() throws Exception{
+    void givenArticleIdToDelete_whenRequesting_thenDeletesArticles() throws Exception{
         // Given
         long articleId = 1L;
         String userId = "hyeonTest";
