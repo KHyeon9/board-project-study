@@ -5,6 +5,10 @@ values ('hyeon', '{noop}dummy', 'Hyeon', 'hyeon@mail.com', 'Hyeon', now(), 'hyeo
 insert into user_account (user_id, user_password, nickname, email, memo, created_at, created_by, modified_at, modified_by)
 values ('hyeon2', '{noop}dummy', 'Hyeon2', 'hyeon2@mail.com', 'Hyeon2', now(), 'hyeon2', now(), 'hyeon2');
 
+insert into user_account (user_id, user_password, nickname, email, memo, created_at, created_by, modified_at, modified_by)
+values ('hyeon3', '{noop}dummy', 'Hyeon3', 'hyeon3@mail.com', 'Hyeon3', now(), 'hyeon3', now(), 'hyeon3');
+
+
 -- article 102
 insert into article(user_id, title, content, created_by, created_at, modified_by, modified_at)
 values ('hyeon2', 'test1', 'content1 #gold', 'hyeon2', '2022-01-12', 'hyeon2', '2022-01-12'),
